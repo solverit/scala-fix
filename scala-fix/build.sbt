@@ -5,9 +5,7 @@ version := "0.0.1"
 lazy val commonSettings = Seq(
   organization := "com.github.solverit",
   version := "0.0.1",
-  scalaVersion := "2.10.6",
-  sbtPlugin := true,
-  sbtVersion := "0.13.13",
+  scalaVersion := "2.12.0",
 
   scalacOptions ++= Seq(
     "-deprecation",
@@ -24,7 +22,7 @@ lazy val commonSettings = Seq(
     // "-Ywarn-dead-code", // N.B. doesn't work well with the ??? hole
     // "-Ywarn-numeric-widen",
     // "-Ywarn-value-discard",
-    // "-Ywarn-unused-import",
+    "-Ywarn-unused-import",
     "-Xfuture"
   )
 )
@@ -34,13 +32,13 @@ lazy val libDependencies = Seq(
 )
 
 lazy val testDependencies = Seq(
-  "org.scalatest" %% "scalatest" % "2.2.4" % "test",
+  "org.scalatest" %% "scalatest" % "3.0.0" % "test",
   "org.scalacheck" %% "scalacheck" % "1.13.4" % "test"
 )
 
 lazy val root = project.in(file("."))
   .settings(commonSettings: _*)
   .settings(libraryDependencies ++= (libDependencies ++ testDependencies))
-  .enablePlugins(scalafix.sbt.FixProtocolPlugin)
+//  .enablePlugins(scalafix.sbt.FixProtocolPlugin)
 
 
